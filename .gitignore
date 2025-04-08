@@ -1,1 +1,36 @@
+tsx
+  
+import React, { useState } from'react';
+import classNames from 'classnames';
+import 'tailwindcss/tailwind.css';
 
+interface Member1ComponentProps {
+  // 可按需添加props
+}
+
+const Member1Component: React.FC<Member1ComponentProps> = (props) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  return (
+    <div
+      className={classNames('bg - gray - 200 p - 4 border border - gray - 400', {
+        'bg - gray - 300': isHovered,
+      })}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <h2 className="text - lg font - bold">组员1作品（带状态）</h2>
+      {isHovered && <p>鼠标悬停时显示的内容</p >}
+    </div>
+  );
+};
+
+export default Member1Component;
